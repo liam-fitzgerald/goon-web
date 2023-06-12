@@ -7,12 +7,18 @@
     |=  jon=^json
     ^-  iota:goon
     ?<  ?=(~ jon)
-    ?>  ?=(%s -.jon)
-    ?~  i=(slay p.jon)
-      !!
-    ?>  ?=(%$ -.u.i)
-    p.u.i
-    
+    ?>  ?=(%o -.jon)
+    =/  aur  (~(got by p.jon) %aura)
+    =/  dat  (~(got by p.jon) %data)
+    ?<  ?=(~ aur)
+    ?<  ?=(~ dat)
+    ?>  ?=(%s -.aur)
+    ?>  ?=(%s -.dat)
+    ?:  =(%t p.aur)
+      [p.aur p.dat]
+    ?:  =(%f p.aur)
+      [p.aur =('&' p.dat)]
+    [p.aur (slav p.aur p.dat)]
   ++  noun  iota:goon
   --
 ++  grow

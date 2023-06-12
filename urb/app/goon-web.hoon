@@ -41,12 +41,18 @@
         info/s/info.q.a
         lede/s/lede.q.a
     ==
+  ++  get-tube
+    |=  =mars:clay
+    ~+ 
+    =/   hed  /cc/(scot %p our.bowl)/[q.byk.bowl]/(scot %da now.bowl)
+    .^(tube:clay (welp hed /[a.mars]/[b.mars]))
+
   ++  page-to-json
     |=  =page
     ^-  json
     =/   hed  /cc/(scot %p our.bowl)/[q.byk.bowl]/(scot %da now.bowl)
-    =+  .^(fst=tube:clay (welp hed /noun/[p.page]))
-    =+  .^(snd=tube:clay (welp hed /[p.page]/json))
+    =+  fst=(get-tube %noun p.page)
+    =+  snd=(get-tube p.page %json)
     %-  pairs
     :~  mark/s/p.page
         data/!<(json (snd (fst !>(q.page))))
@@ -59,7 +65,38 @@
 ++  on-init  `this
 ++  on-save  !>(~)
 ++  on-load  on-load:def
-++  on-poke  on-poke:def
+++  on-poke  
+  |=  [=mark =vase]
+  |^ 
+  ?.  =(%json mark)
+    !!
+  =/  =stab:goon
+    %.  !<(json vase)
+    =,  dejs:format
+    %-  ot
+    :~  path/pa
+        :-  %blade
+        %-  of
+        :~  act/so
+            add/jp
+            edit/jp
+        ==
+    ==
+  :_  this
+  [%pass / %agent [our.bowl %pals] %poke %goon-stab !>(stab)]~
+  ++  jp
+    |=  =json
+    ^-  page
+    ?<  ?=(~ json)
+    ?>  ?=(%o -.json)
+    =/  mar  (~(got by p.json) %mark)
+    =/  dat  (~(got by p.json) %data)
+    ?<  ?=(~ mar)
+    ?>  ?=(%s -.mar)
+    =+  .^(=tube:clay %cc /(scot %p our.bowl)/[q.byk.bowl]/(scot %da now.bowl)/json/[p.mar])
+    [p.mar q:(tube !>(dat))]
+  --
+::
 ++  on-watch  on-watch:def
 ++  on-peek   
   |=  =path
