@@ -3,7 +3,7 @@
 +$  info  @t
 +$  lede  @t
 +$  interact
-  [=info =lede]
+  [=lede =info]
 +$  act
   (pair term interact)
 +$  iota  $@(@t (pair aura @))
@@ -18,12 +18,15 @@
   $%  [%act =term]
       [%edit =page]
       [%add =page]
+      [%click ~]
   ==
 ::
 +$  stab  (pair path blade)
 ++  scod
   |=  =iota
   ?@  iota  iota
+  ?:  =('t' p.iota)
+    q.iota
   (scot iota)
 +$  attr
   $% 

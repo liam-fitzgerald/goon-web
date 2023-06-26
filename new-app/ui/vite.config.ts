@@ -12,7 +12,7 @@ export default ({ mode }) => {
   return defineConfig({
     plugins: [
       urbitPlugin({
-        base: "app",
+        base: "goon",
         target: SHIP_URL,
         secure: false,
         changeOrigin: true,

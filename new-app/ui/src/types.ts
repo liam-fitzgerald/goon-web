@@ -20,11 +20,79 @@ export interface MarkProps<T> {
 }
 
 export function isValidMarkProps<T>(x: MarkProps<T>): x is EditMarkProps<T> {
-  return !!(!!x.edit && !!x.onChange);
+  return !!(!!x.edit && (true || !!x.onChange));
 }
 
 export interface EditMarkProps<T> {
   path: string;
   edit: EditMode;
   onChange: (t: T) => Promise<void>;
+}
+
+export type Hint =
+  | {
+      list: null;
+    }
+  | {
+      "no-reorg": null;
+    };
+
+export interface GoonAct {
+  term: string;
+  info: string;
+  lede: string;
+}
+export type GoonAttr =
+  | { lede: string }
+  | { info: string }
+  | { value: Page }
+  | { edit: null }
+  | { add: null }
+  | { act: GoonAct[] }
+  | { click: null }
+  | { hint: Hint[] };
+
+export interface Goad {
+  iota: string;
+  attr: GoonAttr[];
+  child: Goad[];
+}
+
+interface Attrs {
+  lede?: string;
+  info?: string;
+  value?: Page;
+  edit?: null;
+  add?: null;
+  act?: GoonAct[];
+  click?: null;
+  hint?: Hint[];
+}
+
+export interface Load {
+  iota: string;
+  attr: Attrs;
+  child: Load[];
+  path: string;
+}
+
+export function toLoad(goad: Goad, path = ""): Load {
+  const p = `${path}/${goad.iota}`;
+  return {
+    ...goad,
+    path: p,
+    child: goad.child.map((c) => toLoad(c, p)),
+    attr: _.reduce(
+      goad.attr,
+      (acc, val) => {
+        const key = Object.keys(val)[0];
+        return { ...acc, [key]: (val as any)[key] };
+      },
+      {} as Attrs
+    ),
+  };
+}
+
+export function getEditMode(x: Load): EditState {
+  return "add" in x.attr ? "add" : "edit" in x.attr ? "edit" : undefined;
 }

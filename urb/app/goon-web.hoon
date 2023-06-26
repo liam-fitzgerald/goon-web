@@ -1,4 +1,6 @@
 /+  default-agent, goon
+/$  noun-to-iota  %noun  %iota
+/$  iota-to-json  %iota  %json
 |%
 ++  enjs
   =,  enjs:format
@@ -50,7 +52,7 @@
   ++  page-to-json
     |=  =page
     ^-  json
-    =/   hed  /cc/(scot %p our.bowl)/[q.byk.bowl]/(scot %da now.bowl)
+    =/  hed  /cc/(scot %p our.bowl)/[q.byk.bowl]/(scot %da now.bowl)
     =+  fst=(get-tube %noun p.page)
     =+  snd=(get-tube p.page %json)
     %-  pairs
@@ -80,10 +82,11 @@
         :~  act/so
             add/jp
             edit/jp
+            click/ul
         ==
     ==
   :_  this
-  [%pass / %agent [our.bowl %pals] %poke %goon-stab !>(stab)]~
+  [%pass / %agent [our.bowl %poast] %poke %goon-stab !>(stab)]~
   ++  jp
     |=  =json
     ^-  page
@@ -103,7 +106,7 @@
   ^-  (unit (unit cage))
   ?+    path  (on-peek:def path)
       [%x %goon ~]
-    =+  .^(=goad:goon /gx/(scot %p our.bowl)/pals/(scot %da now.bowl)/goon/noun)
+    =+  .^(=goad:goon /gx/(scot %p our.bowl)/poast/(scot %da now.bowl)/goon/noun)
     ``json+!>((enjs bowl goad))
   ==
 ++  on-agent  on-agent:def
