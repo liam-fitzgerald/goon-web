@@ -20,7 +20,7 @@ interface TextInputProps extends EditMarkProps<Iota> {
 
 function TextInput(props: TextInputProps) {
   const { edit, text, path } = props;
-  const loadingRef = useRef<boolean>(0);
+  const loadingRef = useRef<number>(0);
   const [value, setValue] = useState(text);
   useEffect(() => {
     if (loadingRef.current === 0) {

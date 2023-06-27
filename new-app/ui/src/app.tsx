@@ -4,16 +4,28 @@ import Iota from "./components/marks/Iota";
 import Copy from "./components/copy";
 import { useGoonStore } from "./state/goon";
 import Pour from "./components/Pour";
+import Image from "./components/marks/Image";
+import Url from "./components/marks/Url";
 
 const shipIota = { aura: "p", data: "~hastuc-dibtux" };
 const flagIota = { aura: "f", data: ".y" };
 const falseFlagIota = { aura: "f", data: ".n" };
 const dateIota = { aura: "da", data: "~2023.6.12..16.53.52..15b7" };
 const textIota = { aura: "t", data: "This is some text" };
+const imagePage = {
+  mark: "image",
+  data: {
+    src: "https://storage.googleapis.com/media.urbit.org/blog/usingurbit-2023.jpg",
+    aspectRatio: 2,
+  },
+};
 
 const log: any = async (e: any) => {
   console.log(e);
 };
+
+const href =
+  "https://www.tandfonline.com/doi/full/10.1080/19381980.2017.1375635";
 
 export function App() {
   useEffect(() => {
@@ -37,6 +49,7 @@ export function App() {
               size="sm"
               lede="A ship input"
               info="Ship that you would like to initiate a DM with"
+              path="/test"
               value={
                 <Iota iota={shipIota} onChange={log} path="/test" edit="edit" />
               }
@@ -48,6 +61,7 @@ export function App() {
               size="md"
               lede="A ship input"
               info="Ship that you would like to initiate a DM with"
+              path="/test"
               value={
                 <Iota iota={shipIota} onChange={log} path="/test" edit="edit" />
               }
@@ -103,6 +117,54 @@ export function App() {
           <li>
             <h4>Text New</h4>
             <Iota iota={textIota} path="/test" edit="add" onChange={log} />
+          </li>
+          <li>
+            <h4>Image Value</h4>
+            <Image image={imagePage.data} path="/test" />
+          </li>
+          <li>
+            <h4>Image Edit</h4>
+            <Image
+              image={imagePage.data}
+              path="/test"
+              edit="edit"
+              onChange={log}
+            />
+          </li>
+          <li>
+            <h4>Image Add</h4>
+            <Image
+              image={imagePage.data}
+              path="/test"
+              edit="add"
+              onChange={log}
+            />
+          </li>
+          <li>
+            <h4>Link</h4>
+            <Url
+              url={href}
+              path="/test"
+              onChange={log}
+            />
+          </li>
+          <li>
+            <h4>Link Add</h4>
+            <Url
+              url={href}
+              path="/test"
+              edit="add"
+              onChange={log}
+            />
+          </li>
+          <li>
+            <h4>Link Edit</h4>
+            <Url
+              url={href}
+              path="/test"
+              edit="edit"
+              onChange={log}
+            />
           </li>
         </ul>
       </div>

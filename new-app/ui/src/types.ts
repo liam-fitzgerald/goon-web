@@ -10,6 +10,11 @@ export interface Iota {
   data: string;
 }
 
+export interface ImageMark {
+  src: string;
+  aspectRatio: number;
+}
+
 export type EditMode = "add" | "edit";
 export type EditState = EditMode | undefined;
 

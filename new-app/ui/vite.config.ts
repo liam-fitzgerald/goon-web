@@ -19,5 +19,6 @@ export default ({ mode }) => {
       }),
       reactRefresh(),
     ],
+    assetsInclude: ["**/*.svg"],
   });
 };
